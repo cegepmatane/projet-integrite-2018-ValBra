@@ -4,7 +4,7 @@ public class Equipe {
 
 	protected String nom,pays,anneeDeCreation,stade,entraineur;
 	
-	public Equipe(String nom, String pays, String stade, String entraineur, String anneeDeCreation) {
+	public Equipe(String nom, String pays, String anneeDeCreation,String stade, String entraineur) {
 		super();
 		this.nom = nom;
 		this.pays = pays;
