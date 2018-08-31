@@ -3,7 +3,6 @@ package vue;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;

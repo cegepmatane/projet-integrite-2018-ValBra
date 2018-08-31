@@ -6,6 +6,7 @@ import modele.Equipe;
 
 public class NavigateurDesVues extends Application{
 	
+	private VueAjouterEquipe vueAjouterEquipe = new VueAjouterEquipe();
 	private VueEquipe vueEquipe = new VueEquipe();
 	private VueListeEquipe vueListeEquipe = new VueListeEquipe();
 	private Stage stade;
@@ -13,8 +14,12 @@ public class NavigateurDesVues extends Application{
 	@Override
 	public void start(Stage stade) throws Exception {
 		this.stade=stade;
-		stade.setScene(this.vueListeEquipe);
+		stade.setScene(this.vueAjouterEquipe);
 		stade.show();
+	}
+	
+	public VueAjouterEquipe getVueAjouterEquipe() {
+		return vueAjouterEquipe;
 	}
 
 	public VueEquipe getVueEquipe() {
@@ -25,6 +30,11 @@ public class NavigateurDesVues extends Application{
 		return vueListeEquipe;
 	}
 	
+	public void naviguerVersVueAjouterEquipe() {
+		stade.setScene(this.vueAjouterEquipe);
+		stade.show();
+	}
+
 	public void naviguerVersVueEquipe() {
 		stade.setScene(this.vueEquipe);
 		stade.show();
