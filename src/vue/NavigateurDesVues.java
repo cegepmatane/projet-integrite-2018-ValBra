@@ -15,25 +15,14 @@ public class NavigateurDesVues extends Application{
 	private VueListeEquipe vueListeEquipe = new VueListeEquipe();
 	private Stage stade;
 	private ControleurEquipe controleur;
-	
-	public NavigateurDesVues() {
-		//Test vueListeEquipe
-		List<Equipe> listeEquipesTest = new ArrayList<Equipe>();
-		listeEquipesTest.add(new Equipe("Nancy", "France", "1967", "Marcel Picot","Didier Tholot"));
-		listeEquipesTest.add(new Equipe("Impact Montréal", "Canada", "1992", "Saputo","Rémi Garde"));
-		listeEquipesTest.add(new Equipe("Celtic Glasgow", "Ecosse", "1892", "Celtic Park","Brendan Rogers"));
-		vueListeEquipe.afficherListeEquipes(listeEquipesTest);
-		
-		//Test vueEquipe
-		Equipe equipe1 = new Equipe("AS Nancy","France","1967","Marcel Picot","Didier Tholot");
-		vueEquipe.afficherEquipe(equipe1);
-	}
 
 	@Override
 	public void start(Stage stade) throws Exception {
 		this.stade=stade;
-		stade.setScene(this.vueEquipe);
+		stade.setScene(this.vueListeEquipe);
 		stade.show();
+		this.controleur = ControleurEquipe.getInstance();
+		controleur.afficherVues(this);
 	}
 	
 	public VueAjouterEquipe getVueAjouterEquipe() {
