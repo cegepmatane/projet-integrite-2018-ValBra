@@ -2,7 +2,6 @@ package vue;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import modele.Equipe;
 
 public class NavigateurDesVues extends Application{
 	
@@ -14,7 +13,7 @@ public class NavigateurDesVues extends Application{
 	@Override
 	public void start(Stage stade) throws Exception {
 		this.stade=stade;
-		stade.setScene(this.vueAjouterEquipe);
+		stade.setScene(this.vueListeEquipe);
 		stade.show();
 	}
 	
