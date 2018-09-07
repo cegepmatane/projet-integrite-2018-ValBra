@@ -38,10 +38,6 @@ public class VueEquipe extends Scene{
 		grilleEquipe.add(valeurEntraineur, 1, 4);
 		
 		panneau.getChildren().add(grilleEquipe);
-
-		//Test
-		Equipe equipe1 = new Equipe("AS Nancy","France","1967","Marcel Picot","Didier Tholot");
-		this.afficherEquipe(equipe1);
 	}
 	
 	public void afficherEquipe(Equipe equipe) {

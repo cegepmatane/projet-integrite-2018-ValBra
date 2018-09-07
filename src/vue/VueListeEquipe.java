@@ -19,13 +19,6 @@ public class VueListeEquipe extends Scene {
 		grilleEquipes = new GridPane();
 		
 		panneau.getChildren().add(grilleEquipes);
-		
-		//Test
-		List<Equipe> listeEquipesTest = new ArrayList<Equipe>();
-		listeEquipesTest.add(new Equipe("Nancy", "France", "1967", "Marcel Picot","Didier Tholot"));
-		listeEquipesTest.add(new Equipe("Impact Montréal", "Canada", "1992", "Saputo","Rémi Garde"));
-		listeEquipesTest.add(new Equipe("Celtic Glasgow", "Ecosse", "1892", "Celtic Park","Brendan Rogers"));
-		this.afficherListeEquipes(listeEquipesTest);
 	}
 
 	public void afficherListeEquipes(List<Equipe> listeEquipes) {

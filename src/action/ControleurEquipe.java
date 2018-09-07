@@ -7,5 +7,8 @@ public class ControleurEquipe {
 	
 	public ControleurEquipe(NavigateurDesVues navigateur) {
 		this.navigateur = navigateur;
+		navigateur.naviguerVersVueAjouterEquipe();
+		navigateur.naviguerVersVueEquipe();
+		navigateur.naviguerVersVueListeEquipe();
 	}
 }
