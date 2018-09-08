@@ -3,6 +3,7 @@ package action;
 import java.util.ArrayList;
 import java.util.List;
 
+import accesseur.EquipeDAO;
 import modele.Equipe;
 import vue.NavigateurDesVues;
 import vue.VueAjouterEquipe;
@@ -25,12 +26,10 @@ public class ControleurEquipe {
 		this.vueEquipe = navigateur.getVueEquipe();
 		this.vueListeEquipe = navigateur.getVueListeEquipe();
 		
-		//Test vueListeEquipe
-		List<Equipe> listeEquipesTest = new ArrayList<Equipe>();
-		listeEquipesTest.add(new Equipe("AS Nancy", "France", "1967", "Marcel Picot","Didier Tholot"));
-		listeEquipesTest.add(new Equipe("Impact Montréal", "Canada", "1992", "Saputo","Rémi Garde"));
-		listeEquipesTest.add(new Equipe("Celtic Glasgow", "Ecosse", "1892", "Celtic Park","Brendan Rogers"));
-		vueListeEquipe.afficherListeEquipes(listeEquipesTest);
+		//Test DAO
+		EquipeDAO testListeEquipes = new EquipeDAO();
+		List<Equipe> listeEquipes = testListeEquipes.montrerListeEquipe();
+		vueListeEquipe.afficherListeEquipes(listeEquipes);
 				
 		//Test vueEquipe
 		Equipe equipe1 = new Equipe("AS Nancy","France","1967","Marcel Picot","Didier Tholot");
