@@ -5,6 +5,7 @@ import java.util.List;
 
 import accesseur.EquipeDAO;
 import modele.Equipe;
+import modele.Joueur;
 import vue.NavigateurDesVues;
 import vue.VueAjouterEquipe;
 import vue.VueEquipe;
@@ -32,7 +33,9 @@ public class ControleurEquipe {
 		vueListeEquipe.afficherListeEquipes(listeEquipes);
 				
 		//Test vueEquipe
-		Equipe equipe1 = new Equipe("AS Nancy","France","1967","Marcel Picot","Didier Tholot");
+		List<Joueur> listeJoueursNancy = new ArrayList<Joueur>();
+		listeJoueursNancy.add(new Joueur("Chernik","31","gardien"));
+		Equipe equipe1 = new Equipe("AS Nancy","France","1967","Marcel Picot","Didier Tholot",listeJoueursNancy);
 		vueEquipe.afficherEquipe(equipe1);
 	}
 	
