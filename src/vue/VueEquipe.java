@@ -61,13 +61,13 @@ public class VueEquipe extends Scene{
 		this.valeurStade.setText(equipe.getStade());
 		this.valeurEntraineur.setText(equipe.getEntraineur());
 		
-		if(!equipe.getListeJoueurs().isEmpty()) {
+		/*if(!equipe.getListeJoueurs().isEmpty()) {
 			for(int indexListeJoueurs=0; indexListeJoueurs<equipe.getListeJoueurs().size();indexListeJoueurs++) {
 				grilleEquipe.add(new Label(equipe.getListeJoueurs().get(indexListeJoueurs).getNom()), 1, indexListeJoueurs+6);
 				grilleEquipe.add(new Label(equipe.getListeJoueurs().get(indexListeJoueurs).getPoste()), 2, indexListeJoueurs+6);
 				grilleEquipe.add(new Label(equipe.getListeJoueurs().get(indexListeJoueurs).getAge()), 3, indexListeJoueurs+6);
 			}
-		}
+		}*/
 		
 	}
 

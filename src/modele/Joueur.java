@@ -41,5 +41,4 @@ public class Joueur {
 		this.equipe = equipe;
 	}
 	
-	
 }
