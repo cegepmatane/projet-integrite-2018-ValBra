@@ -11,6 +11,7 @@ import modele.Equipe;
 public class NavigateurDesVues extends Application{
 	
 	private VueAjouterEquipe vueAjouterEquipe = new VueAjouterEquipe();
+	private VueEditerEquipe vueEditerEquipe = new VueEditerEquipe();
 	private VueEquipe vueEquipe = new VueEquipe();
 	private VueListeEquipe vueListeEquipe = new VueListeEquipe();
 	private Stage stade;
@@ -26,8 +27,17 @@ public class NavigateurDesVues extends Application{
 		this.vueAjouterEquipe.setControleur(controleur);
 		this.vueEquipe.setControleur(controleur);
 		this.vueListeEquipe.setControleur(controleur);
+		this.vueEditerEquipe.setControleur(controleur);
 	}
 	
+	public VueEditerEquipe getVueEditerEquipe() {
+		return vueEditerEquipe;
+	}
+	
+	public void setVueEditerEquipe(VueEditerEquipe vueEditerEquipe) {
+		this.vueEditerEquipe = vueEditerEquipe;
+	}
+
 	public VueAjouterEquipe getVueAjouterEquipe() {
 		return vueAjouterEquipe;
 	}
@@ -53,6 +63,12 @@ public class NavigateurDesVues extends Application{
 	public void naviguerVersVueListeEquipe() {
 		stade.setScene(this.vueListeEquipe);
 		stade.show();
+	}
+	
+	public void naviguerVersVueEditerEquipe()
+	{
+		stade.setScene(this.vueEditerEquipe);
+		stade.show();				
 	}
 
 }

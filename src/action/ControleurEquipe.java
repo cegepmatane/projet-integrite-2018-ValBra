@@ -60,4 +60,11 @@ public class ControleurEquipe {
 	{
 		this.navigateur.naviguerVersVueAjouterEquipe();
 	}
+	
+	public void notifierNaviguerEditerEquipe()
+	{
+		System.out.println("ControleurMouton.notifierEditerMouton()");
+		this.navigateur.naviguerVersVueEditerEquipe();
+		
+	}
 }
