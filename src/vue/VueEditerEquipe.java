@@ -3,7 +3,6 @@ package vue;
 import java.awt.TextField;
 
 import action.ControleurEquipe;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
