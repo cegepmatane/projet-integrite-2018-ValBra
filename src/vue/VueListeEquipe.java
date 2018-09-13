@@ -4,22 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import action.ControleurEquipe;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.control.Button;
 import modele.Equipe;
 
 public class VueListeEquipe extends Scene {
 	
 	protected GridPane grilleEquipes;
-	private ControleurEquipe controleurEquipe;
+	private ControleurEquipe controleurEquipe = null;
+	private Button naviguerVersAjouterEquipe;
 
 	public VueListeEquipe() {
 		super(new Pane(),400,400);
 		Pane panneau = (Pane) this.getRoot();
 		grilleEquipes = new GridPane();
-		
+		naviguerVersAjouterEquipe = new Button("Ajouter une équipe");
 		panneau.getChildren().add(grilleEquipes);
 	}
 
@@ -39,6 +43,17 @@ public class VueListeEquipe extends Scene {
 			this.grilleEquipes.add(new Label(equipe.getEntraineur()), 4, position);
 			position++;
 		}
+		
+		this.naviguerVersAjouterEquipe.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				controleurEquipe.notifierNaviguerAjouterEquipe();
+			}
+			
+		});
+		this.grilleEquipes.add(this.naviguerVersAjouterEquipe, 1, ++position);
+		
 	}
 	
 	public void setControleur(ControleurEquipe controleurEquipe) {

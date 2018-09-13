@@ -19,7 +19,7 @@ public class NavigateurDesVues extends Application{
 	@Override
 	public void start(Stage stade) throws Exception {
 		this.stade=stade;
-		stade.setScene(this.vueAjouterEquipe);
+		stade.setScene(this.vueListeEquipe);
 		stade.show();
 		this.controleur = ControleurEquipe.getInstance();
 		controleur.afficherVues(this);
