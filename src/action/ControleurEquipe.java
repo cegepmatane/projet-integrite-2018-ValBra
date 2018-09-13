@@ -16,9 +16,10 @@ public class ControleurEquipe {
 	private VueAjouterEquipe vueAjouterEquipe;
 	private VueEquipe vueEquipe;
 	private VueListeEquipe vueListeEquipe;
+	private EquipeDAO equipeDAO;
 	
 	public ControleurEquipe() {
-		
+		this.equipeDAO = new EquipeDAO();
 	}
 	
 	public void afficherVues(NavigateurDesVues navigateur) {
@@ -28,9 +29,8 @@ public class ControleurEquipe {
 		this.vueListeEquipe = navigateur.getVueListeEquipe();
 		
 		//Test DAO
-		EquipeDAO testListeEquipes = new EquipeDAO();
 		//testListeEquipes.montrerListeEquipe();
-		List<Equipe> listeEquipes = testListeEquipes.montrerListeEquipe();
+		List<Equipe> listeEquipes = equipeDAO.montrerListeEquipe();
 		vueListeEquipe.afficherListeEquipes(listeEquipes);
 		//testListeEquipes.accesBaseDeDonnees();
 				
@@ -47,5 +47,10 @@ public class ControleurEquipe {
 			instance = new ControleurEquipe();
 		}
 		return instance;
+	}
+	
+	public void enregistrerEquipe() {
+		Equipe equipe = this.navigateur.getVueAjouterEquipe().creerEquipe();;
+		this.navigateur.naviguerVersVueListeEquipe();
 	}
 }
