@@ -11,6 +11,7 @@ import modele.Equipe;
 import modele.Joueur;
 
 public class EquipeDAO {
+	Connection connexion;
 
 	public List<Equipe> montrerListeEquipe(){
 		
@@ -38,7 +39,7 @@ public class EquipeDAO {
 		}
  		
  		try {
- 			Connection connexion = DriverManager.getConnection(BASEDEDONNEES_URL, BASEDEDONNEES_USAGER, BASEDEDONNEES_MOTDEPASSE);
+ 			this.connexion = DriverManager.getConnection(BASEDEDONNEES_URL, BASEDEDONNEES_USAGER, BASEDEDONNEES_MOTDEPASSE);
  			Statement requeteListeEquipes = connexion.createStatement();
  			ResultSet curseurListeEquipes = requeteListeEquipes.executeQuery("SELECT * FROM equipes");
  			curseurListeEquipes.next();
@@ -53,5 +54,15 @@ public class EquipeDAO {
  		}catch(SQLException e) {
  			e.printStackTrace();
  		}
+	}
+	
+	public void ajouterEquipe(Equipe equipe) {
+		try {
+			Statement requeteAjoutEquipe = connexion.createStatement();
+			String sqlAjouterEquipe = "INSERT into equipes(nom,pays,anneeCreation,stade,entraineur) VALUES('"+equipe.getNom()+"','"+equipe.getPays()+"','"+equipe.getAnneeDeCreation()+"','"+equipe.getStade()+"','"+equipe.getEntraineur()+"')";
+			requeteAjoutEquipe.execute(sqlAjouterEquipe);
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
 	}
 }

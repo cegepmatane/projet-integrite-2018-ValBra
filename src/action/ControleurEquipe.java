@@ -50,7 +50,8 @@ public class ControleurEquipe {
 	}
 	
 	public void enregistrerEquipe() {
-		Equipe equipe = this.navigateur.getVueAjouterEquipe().creerEquipe();;
+		Equipe equipe = this.navigateur.getVueAjouterEquipe().creerEquipe();
+		this.equipeDAO.ajouterEquipe(equipe);
 		this.navigateur.naviguerVersVueListeEquipe();
 	}
 }
