@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import action.ControleurEquipe;
-import javafx.application.Application;
+import javafx.application.*;
 import javafx.stage.Stage;
 import modele.Equipe;
 
