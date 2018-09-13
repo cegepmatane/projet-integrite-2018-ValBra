@@ -15,11 +15,11 @@ public class EquipeDAO {
 	public List<Equipe> montrerListeEquipe(){
 		
 		//Test
-		List<Joueur> listeJoueursNancy = new ArrayList<Joueur>();
-		listeJoueursNancy.add(new Joueur("Chernik","31","gardien"));
+		/*List<Joueur> listeJoueursNancy = new ArrayList<Joueur>();
+		listeJoueursNancy.add(new Joueur("Chernik","31","gardien"));*/
 		
 		List listeEquipe = new ArrayList<Equipe>();
-		listeEquipe.add(new Equipe("AS Nancy", "France", "1967", "Marcel Picot","Didier Tholot",listeJoueursNancy));
+		listeEquipe.add(new Equipe("AS Nancy", "France", "1967", "Marcel Picot","Didier Tholot"));
 		listeEquipe.add(new Equipe("Impact Montréal", "Canada", "1992", "Saputo","Rémi Garde"));
 		listeEquipe.add(new Equipe("Celtic Glasgow", "Ecosse", "1892", "Celtic Park","Brendan Rogers"));
 		return listeEquipe;
@@ -41,7 +41,7 @@ public class EquipeDAO {
  			Connection connexion = DriverManager.getConnection(BASEDEDONNEES_URL, BASEDEDONNEES_USAGER, BASEDEDONNEES_MOTDEPASSE);
  			Statement requeteListeEquipes = connexion.createStatement();
  			ResultSet curseurListeEquipes = requeteListeEquipes.executeQuery("SELECT * FROM equipes");
- 			//curseurListeEquipes.next();
+ 			curseurListeEquipes.next();
  			if(curseurListeEquipes.next()) {
  	 			String nom = curseurListeEquipes.getString("nom");
  	 			String pays = curseurListeEquipes.getString("pays");
@@ -50,7 +50,6 @@ public class EquipeDAO {
  	 			String coach = curseurListeEquipes.getString("entraineur");
  	 			System.out.println(nom+", équipe de "+pays+" créée en "+anneeCreation+", joue au stade "+stade+" et est entrainée par "+coach);
  			}
- 			
  		}catch(SQLException e) {
  			e.printStackTrace();
  		}

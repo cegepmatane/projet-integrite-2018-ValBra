@@ -1,5 +1,6 @@
 package vue;
 
+import action.ControleurEquipe;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,6 +14,7 @@ public class VueAjouterEquipe extends Scene{
 	private TextField valeurAnneeDeCreation;
 	private TextField valeurStade;
 	private TextField valeurEntraineur;
+	private ControleurEquipe controleurEquipe;
 
 	public VueAjouterEquipe() {
 		super(new VBox(), 400, 400);
@@ -42,6 +44,10 @@ public class VueAjouterEquipe extends Scene{
 		panneau.getChildren().add(new Label("Ajouter une équipe"));
 		panneau.getChildren().add(grilleEquipe);
 		panneau.getChildren().add(new Button("Enregistrer"));
+	}
+	
+	public void setControleur(ControleurEquipe controleurEquipe) {
+		this.controleurEquipe = controleurEquipe;
 	}
 
 }

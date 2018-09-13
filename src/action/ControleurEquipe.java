@@ -29,9 +29,10 @@ public class ControleurEquipe {
 		
 		//Test DAO
 		EquipeDAO testListeEquipes = new EquipeDAO();
-		//List<Equipe> listeEquipes = testListeEquipes.montrerListeEquipe();
-		//vueListeEquipe.afficherListeEquipes(listeEquipes);
-		testListeEquipes.accesBaseDeDonnees();
+		//testListeEquipes.montrerListeEquipe();
+		List<Equipe> listeEquipes = testListeEquipes.montrerListeEquipe();
+		vueListeEquipe.afficherListeEquipes(listeEquipes);
+		//testListeEquipes.accesBaseDeDonnees();
 				
 		//Test vueEquipe
 		List<Joueur> listeJoueursNancy = new ArrayList<Joueur>();
