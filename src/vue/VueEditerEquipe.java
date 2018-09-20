@@ -1,7 +1,6 @@
 package vue;
 
-import java.awt.TextField;
-
+import javafx.scene.control.TextField;
 import action.ControleurEquipe;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -39,23 +38,32 @@ public class VueEditerEquipe extends Scene{
 		
 		valeurNom = new TextField();
 		grilleEquipe.add(new Label("Nom: "), 0, 0);
-		//grilleEquipe.add(valeurNom,1,0);
+		grilleEquipe.add(valeurNom,1,0);
 		valeurPays = new TextField("");
 		grilleEquipe.add(new Label("Pays: "), 0, 1);
-		//grilleEquipe.add(valeurPays, 1, 1);
+		grilleEquipe.add(valeurPays, 1, 1);
  		valeurAnneeCreation = new TextField("");
  		grilleEquipe.add(new Label("Année de création: "), 0, 2);
- 		//grilleEquipe.add(valeurAnneeCreation, 1, 2);		
+ 		grilleEquipe.add(valeurAnneeCreation, 1, 2);		
  		valeurStade = new TextField("");
  		grilleEquipe.add(new Label("Stade: "), 0, 3);
- 		//grilleEquipe.add(valeurStade, 1, 3);
+ 		grilleEquipe.add(valeurStade, 1, 3);
 		valeurEntraineur = new TextField("");
 		grilleEquipe.add(new Label("Entraineur: "), 0, 4);
-		//grilleEquipe.add(valeurEntraineur, 1, 4);
+		grilleEquipe.add(valeurEntraineur, 1, 4);
 			
 		panneau.getChildren().add(new Label("Editer une équipe"));
 		panneau.getChildren().add(grilleEquipe);
 		panneau.getChildren().add(this.actionEnregistrerEquipe);
+	}
+	
+	public void afficherEquipe(Equipe equipe)
+	{
+		this.valeurNom.setText(equipe.getNom());
+		this.valeurPays.setText(equipe.getPays());
+		this.valeurAnneeCreation.setText(equipe.getAnneeDeCreation());
+		this.valeurStade.setText(equipe.getStade());
+		this.valeurEntraineur.setText(equipe.getEntraineur());
 	}
 	
 	public Equipe demanderEquipe()

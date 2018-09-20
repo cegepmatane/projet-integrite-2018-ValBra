@@ -34,21 +34,23 @@ public class VueListeEquipe extends Scene {
 		this.grilleEquipes.add(new Label("Pays"),1,0);
 		this.grilleEquipes.add(new Label("Année de création"), 2, 0);
 		this.grilleEquipes.add(new Label("Stade"), 3, 0);
-		this.grilleEquipes.add(new Label("Entraineur"), 4, 0);
+		//this.grilleEquipes.add(new Label("Entraineur"), 4, 0);
+		this.grilleEquipes.add(new Label(""), 4, 0);
 		int position=1;
 		for(Equipe equipe:listeEquipes) {
 			naviguerVersEditerEquipe = new Button("Editer");
 			naviguerVersEditerEquipe.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent arg0) {
-					controleurEquipe.notifierNaviguerEditerEquipe();
+					controleurEquipe.notifierNaviguerEditerEquipe(equipe.getId());
 				}});
 			
 			this.grilleEquipes.add(new Label(equipe.getNom()), 0, position);
 			this.grilleEquipes.add(new Label(equipe.getPays()), 1, position);
 			this.grilleEquipes.add(new Label(equipe.getAnneeDeCreation()), 2, position);
 			this.grilleEquipes.add(new Label(equipe.getStade()), 3, position);
-			this.grilleEquipes.add(new Label(equipe.getEntraineur()), 4, position);
+			//this.grilleEquipes.add(new Label(equipe.getEntraineur()), 4, position);
+			this.grilleEquipes.add(naviguerVersEditerEquipe, 4,position);
 			position++;
 		}
 		
@@ -61,7 +63,7 @@ public class VueListeEquipe extends Scene {
 			
 		});
 		this.grilleEquipes.add(this.naviguerVersAjouterEquipe, 1, ++position);
-		this.grilleEquipes.add(this.naviguerVersEditerEquipe, 2, position);
+		//this.grilleEquipes.add(this.naviguerVersEditerEquipe, 2, position);
 		
 	}
 	

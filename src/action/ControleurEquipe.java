@@ -8,6 +8,7 @@ import modele.Equipe;
 import modele.Joueur;
 import vue.NavigateurDesVues;
 import vue.VueAjouterEquipe;
+import vue.VueEditerEquipe;
 import vue.VueEquipe;
 import vue.VueListeEquipe;
 
@@ -16,6 +17,7 @@ public class ControleurEquipe {
 	private VueAjouterEquipe vueAjouterEquipe;
 	private VueEquipe vueEquipe;
 	private VueListeEquipe vueListeEquipe;
+	private VueEditerEquipe vueEditerEquipe;
 	private EquipeDAO equipeDAO;
 	
 	public ControleurEquipe() {
@@ -26,6 +28,7 @@ public class ControleurEquipe {
 		this.navigateur = navigateur;
 		this.vueAjouterEquipe = navigateur.getVueAjouterEquipe();
 		this.vueEquipe = navigateur.getVueEquipe();
+		this.vueEditerEquipe = navigateur.getVueEditerEquipe();
 		this.vueListeEquipe = navigateur.getVueListeEquipe();
 		
 		//Test DAO
@@ -61,8 +64,9 @@ public class ControleurEquipe {
 		this.navigateur.naviguerVersVueAjouterEquipe();
 	}
 	
-	public void notifierNaviguerEditerEquipe()
+	public void notifierNaviguerEditerEquipe(int idEquipe)
 	{
+		this.vueEditerEquipe.afficherEquipe(this.equipeDAO.rapporterEquipe(idEquipe));
 		this.navigateur.naviguerVersVueEditerEquipe();
 		
 	}

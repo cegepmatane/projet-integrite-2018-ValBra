@@ -5,6 +5,7 @@ import java.util.List;
 public class Equipe {
 
 	protected String nom,pays,anneeDeCreation,stade,entraineur;
+	protected int id;
 	//protected List<Joueur> listeJoueurs;
 	
 	public Equipe(String nom, String pays, String anneeDeCreation,String stade, String entraineur) {
@@ -65,6 +66,14 @@ public class Equipe {
 
 	public void setAnneeDeCreation(String anneeDeCreation) {
 		this.anneeDeCreation = anneeDeCreation;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	/*public List<Joueur> getListeJoueurs() {
