@@ -1,11 +1,16 @@
 package vue;
 
 import javafx.scene.control.TextField;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import action.ControleurEquipe;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import modele.Equipe;
+import modele.Joueur;
 import javafx.scene.layout.GridPane;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -18,7 +23,7 @@ public class VueEditerEquipe extends Scene{
 	protected TextField valeurAnneeCreation;
 	protected TextField valeurStade;
 	protected TextField valeurEntraineur;
-	
+	protected GridPane listeJoueurs;
 	private ControleurEquipe controleur = null;
 	protected Button actionEnregistrerEquipe = null;
 	private int idEquipe = 0;
@@ -52,10 +57,30 @@ public class VueEditerEquipe extends Scene{
 		valeurEntraineur = new TextField("");
 		grilleEquipe.add(new Label("Entraineur: "), 0, 4);
 		grilleEquipe.add(valeurEntraineur, 1, 4);
+		
+		List<Joueur> effectif = new ArrayList<Joueur>();
+		Joueur joueur1 = new Joueur("Chernik","31","gardien");
+		effectif.add(joueur1);
+		Joueur joueur2 = new Joueur("Diagne","21","défenseur");
+		effectif.add(joueur2);
+		Joueur joueur3 = new Joueur("Bassi","20","milieu");
+		effectif.add(joueur3);
+		Joueur joueur4 = new Joueur("Dalé","31","attaquant");
+		effectif.add(joueur4);
 			
 		panneau.getChildren().add(new Label("Editer une équipe"));
 		panneau.getChildren().add(grilleEquipe);
 		panneau.getChildren().add(this.actionEnregistrerEquipe);
+		//panneau.getChildren().add(listeJoueurs);
+	}
+	
+	public void afficherEffectif(List<Joueur> effectif) {
+		for(int index=0;index<effectif.size();index++) {
+			this.listeJoueurs.add(new Label(effectif.get(index).getNom()+""), 0, index);
+			this.listeJoueurs.add(new Label(effectif.get(index).getAge()+""), 1, index);
+			this.listeJoueurs.add(new Label(effectif.get(index).getPoste()+""), 2, index);
+			index++;
+		}
 	}
 	
 	public void afficherEquipe(Equipe equipe)
