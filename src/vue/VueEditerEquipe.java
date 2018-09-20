@@ -21,6 +21,7 @@ public class VueEditerEquipe extends Scene{
 	
 	private ControleurEquipe controleur = null;
 	protected Button actionEnregistrerEquipe = null;
+	private int idEquipe = 0;
 	
 	public VueEditerEquipe()  {
 		super(new VBox(), 400, 400);
@@ -59,6 +60,7 @@ public class VueEditerEquipe extends Scene{
 	
 	public void afficherEquipe(Equipe equipe)
 	{
+		this.idEquipe = equipe.getId();
 		this.valeurNom.setText(equipe.getNom());
 		this.valeurPays.setText(equipe.getPays());
 		this.valeurAnneeCreation.setText(equipe.getAnneeDeCreation());
@@ -69,6 +71,7 @@ public class VueEditerEquipe extends Scene{
 	public Equipe demanderEquipe()
 	{
 		Equipe equipe = new Equipe(this.valeurNom.getText(),this.valeurPays.getText(),this.valeurAnneeCreation.getText(),this.valeurStade.getText(), this.valeurEntraineur.getText());
+		equipe.setId(idEquipe);
 		return equipe;
 	}
 

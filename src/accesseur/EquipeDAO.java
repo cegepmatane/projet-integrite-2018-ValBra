@@ -97,4 +97,14 @@ public class EquipeDAO {
 		}
 		return null;
 	}
+	
+	public void modifierEquipe(Equipe equipe) {
+		try {
+			Statement requeteModifierEquipe = connexion.createStatement();
+			String SQL_MODIFIER_EQUIPE = "UPDATE equipes SET nom = '"+equipe.getNom()+"', pays = '"+equipe.getPays()+"', annee = '"+equipe.getAnneeDeCreation()+"', naissance = '"+equipe.getStade()+"', entraineur = '"+equipe.getEntraineur()+"' WHERE id = " + equipe.getId();
+			requeteModifierEquipe.execute(SQL_MODIFIER_EQUIPE);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

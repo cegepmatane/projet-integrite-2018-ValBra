@@ -70,4 +70,11 @@ public class ControleurEquipe {
 		this.navigateur.naviguerVersVueEditerEquipe();
 		
 	}
+	
+	public void notifierEnregistrerMouton() {
+		Equipe equipe = this.navigateur.getVueEditerEquipe().demanderEquipe();
+		this.equipeDAO.modifierEquipe(equipe);
+		this.vueListeEquipe.afficherListeEquipes(this.equipeDAO.montrerListeEquipe());
+		this.navigateur.naviguerVersVueListeEquipe();
+	}
 }
