@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import accesseur.EquipeDAO;
+import accesseur.JoueurDAO;
 import modele.Equipe;
 import modele.Joueur;
 import vue.NavigateurDesVues;
@@ -19,9 +20,11 @@ public class ControleurEquipe {
 	private VueListeEquipe vueListeEquipe;
 	private VueEditerEquipe vueEditerEquipe;
 	private EquipeDAO equipeDAO;
+	private JoueurDAO joueurDAO;
 	
 	public ControleurEquipe() {
 		this.equipeDAO = new EquipeDAO();
+		this.joueurDAO = new JoueurDAO();
 	}
 	
 	public void afficherVues(NavigateurDesVues navigateur) {
@@ -42,6 +45,8 @@ public class ControleurEquipe {
 		listeJoueursNancy.add(new Joueur("Chernik","31","gardien"));
 		Equipe equipe1 = new Equipe("AS Nancy","France","1967","Marcel Picot","Didier Tholot",listeJoueursNancy);
 		vueEquipe.afficherEquipe(equipe1);
+		
+		this.vueEditerEquipe.afficherEffectif(this.joueurDAO.listerJoueurs());
 	}
 	
 	private static ControleurEquipe instance = null;

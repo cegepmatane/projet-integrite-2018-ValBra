@@ -36,7 +36,7 @@ public class JoueurDAO {
 		Statement requeteListeJoueurs;
 		try {
 			requeteListeJoueurs = connection.createStatement();
-			ResultSet curseurListeJoueurs = requeteListeJoueurs.executeQuery("SELECT * FROM joueurs WHERE equipes = 2");
+			ResultSet curseurListeJoueurs = requeteListeJoueurs.executeQuery("SELECT * FROM joueurs WHERE equipe = 0");
 			while(curseurListeJoueurs.next())
 			{
 				int id = curseurListeJoueurs.getInt("id");

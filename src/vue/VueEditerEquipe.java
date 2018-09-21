@@ -75,7 +75,9 @@ public class VueEditerEquipe extends Scene{
 	}
 	
 	public void afficherEffectif(List<Joueur> effectif) {
-		for(int index=0;index<effectif.size();index++) {
+		int index=0;
+		//for(int index=0;index<effectif.size();index++) {
+		for(Joueur joueur:effectif) {
 			this.listeJoueurs.add(new Label(effectif.get(index).getNom()+""), 0, index);
 			this.listeJoueurs.add(new Label(effectif.get(index).getAge()+""), 1, index);
 			this.listeJoueurs.add(new Label(effectif.get(index).getPoste()+""), 2, index);
