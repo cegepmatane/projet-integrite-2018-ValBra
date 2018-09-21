@@ -3,6 +3,7 @@ package modele;
 public class Joueur {
 	protected String nom, age, poste;
 	protected Equipe equipe;
+	protected int id;
 	public Joueur(String nom, String age, String poste) {
 		super();
 		this.nom = nom;
@@ -39,6 +40,12 @@ public class Joueur {
 	}
 	public void setEquipe(Equipe equipe) {
 		this.equipe = equipe;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 }
