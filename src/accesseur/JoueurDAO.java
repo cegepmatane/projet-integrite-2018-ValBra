@@ -30,13 +30,13 @@ public class JoueurDAO {
 		}
 	}
 	
-	public List<Joueur> listerJoueurs()
+	public List<Joueur> listerJoueurs(int idEquipe)
 	{
 		List<Joueur> listeJoueurs =  new ArrayList<Joueur>();			
 		Statement requeteListeJoueurs;
 		try {
 			requeteListeJoueurs = connection.createStatement();
-			ResultSet curseurListeJoueurs = requeteListeJoueurs.executeQuery("SELECT * FROM joueurs WHERE equipe = 0");
+			ResultSet curseurListeJoueurs = requeteListeJoueurs.executeQuery("SELECT * FROM joueurs WHERE equipe = "+idEquipe);
 			while(curseurListeJoueurs.next())
 			{
 				int id = curseurListeJoueurs.getInt("id");
@@ -53,8 +53,6 @@ public class JoueurDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-				
-		//return this.simulerListerDistinctions();
 		return listeJoueurs;
 	}
 }

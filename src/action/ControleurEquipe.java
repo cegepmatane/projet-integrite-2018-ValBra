@@ -41,12 +41,11 @@ public class ControleurEquipe {
 		//testListeEquipes.accesBaseDeDonnees();
 				
 		//Test vueEquipe
-		List<Joueur> listeJoueursNancy = new ArrayList<Joueur>();
+		/*List<Joueur> listeJoueursNancy = new ArrayList<Joueur>();
 		listeJoueursNancy.add(new Joueur("Chernik","31","gardien"));
 		Equipe equipe1 = new Equipe("AS Nancy","France","1967","Marcel Picot","Didier Tholot",listeJoueursNancy);
-		vueEquipe.afficherEquipe(equipe1);
+		vueEquipe.afficherEquipe(equipe1);*/
 		
-		this.vueEditerEquipe.afficherEffectif(this.joueurDAO.listerJoueurs());
 	}
 	
 	private static ControleurEquipe instance = null;
@@ -72,6 +71,7 @@ public class ControleurEquipe {
 	public void notifierNaviguerEditerEquipe(int idEquipe)
 	{
 		this.vueEditerEquipe.afficherEquipe(this.equipeDAO.rapporterEquipe(idEquipe));
+		this.vueEditerEquipe.afficherEffectif(this.joueurDAO.listerJoueurs(idEquipe));
 		this.navigateur.naviguerVersVueEditerEquipe();
 		
 	}

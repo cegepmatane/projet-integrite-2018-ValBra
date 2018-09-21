@@ -15,14 +15,32 @@ public class EquipeDAO {
 
 	public List<Equipe> montrerListeEquipe(){
 		
-		//Test
-		/*List<Joueur> listeJoueursNancy = new ArrayList<Joueur>();
-		listeJoueursNancy.add(new Joueur("Chernik","31","gardien"));*/
-		
-		List listeEquipe = new ArrayList<Equipe>();
+		/*List listeEquipe = new ArrayList<Equipe>();
 		listeEquipe.add(new Equipe("AS Nancy", "France", "1967", "Marcel Picot","Didier Tholot"));
 		listeEquipe.add(new Equipe("Impact Montréal", "Canada", "1992", "Saputo","Rémi Garde"));
 		listeEquipe.add(new Equipe("Celtic Glasgow", "Ecosse", "1892", "Celtic Park","Brendan Rogers"));
+		*/
+		
+		List<Equipe> listeEquipe =  new ArrayList<Equipe>();
+		try {
+ 			Statement requeteListeEquipe = connexion.createStatement();
+ 			ResultSet curseurListeEquipes = requeteListeEquipe.executeQuery("SELECT * FROM equipes");
+ 			curseurListeEquipes.next();
+ 			if(curseurListeEquipes.next()) {
+ 				int id = curseurListeEquipes.getInt("id");
+ 	 			String nom = curseurListeEquipes.getString("nom");
+ 	 			String pays = curseurListeEquipes.getString("pays");
+ 	 			String stade = curseurListeEquipes.getString("stade");
+ 	 			String anneeCreation = curseurListeEquipes.getString("annee");
+ 	 			String coach = curseurListeEquipes.getString("entraineur");
+ 	 			System.out.println(nom+", équipe de "+pays+" créée en "+anneeCreation+", joue au stade "+stade+" et est entrainée par "+coach);
+ 	 			Equipe equipe = new Equipe(nom,pays,anneeCreation,stade,coach);
+ 	 			equipe.setId(id);
+ 	 			listeEquipe.add(equipe);
+ 			}
+ 		}catch(SQLException e) {
+ 			e.printStackTrace();
+ 		}
 		return listeEquipe;
 	}
 	
