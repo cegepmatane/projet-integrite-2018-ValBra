@@ -160,6 +160,25 @@ $$;
 ALTER FUNCTION public.inserernombre() OWNER TO postgres;
 
 --
+-- Name: journaliserequipe(); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION public.journaliserequipe() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+	message TEXT;
+	BEGIN
+		message := NEW.nom || " " || NEW.description;
+		insert into journal(message) values(message);
+	return OLD;
+END
+$$;
+
+
+ALTER FUNCTION public.journaliserequipe() OWNER TO postgres;
+
+--
 -- Name: repetermessage(text); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -395,7 +414,7 @@ INSERT INTO public.memoire VALUES (1, 3);
 -- Name: equipes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.equipes_id_seq', 6, true);
+SELECT pg_catalog.setval('public.equipes_id_seq', 9, true);
 
 
 --
@@ -456,6 +475,20 @@ ALTER TABLE ONLY public.memoire
 --
 
 CREATE INDEX fki_one_equipe_to_many_joueurs ON public.joueurs USING btree (equipe);
+
+
+--
+-- Name: equipes suiviequipe; Type: TRIGGER; Schema: public; Owner: postgres
+--
+
+CREATE TRIGGER suiviequipe BEFORE INSERT OR UPDATE ON public.equipes FOR EACH ROW EXECUTE PROCEDURE public.journaliserequipe();
+
+
+--
+-- Name: equipes suiviequipes; Type: TRIGGER; Schema: public; Owner: postgres
+--
+
+CREATE TRIGGER suiviequipes BEFORE INSERT OR UPDATE ON public.equipes FOR EACH ROW EXECUTE PROCEDURE public.journaliserequipe();
 
 
 --
