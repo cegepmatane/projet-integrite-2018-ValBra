@@ -10,6 +10,8 @@ public class NavigateurDesVues extends Application{
 	private VueEditerEquipe vueEditerEquipe = new VueEditerEquipe();
 	private VueEquipe vueEquipe = new VueEquipe();
 	private VueListeEquipe vueListeEquipe = new VueListeEquipe();
+	private VueAjouterJoueur vueAjouterJoueur = new VueAjouterJoueur();
+	private VueEditerJoueur vueEditerJoueur = new VueEditerJoueur();
 	private Stage stade;
 	private ControleurEquipe controleur;
 	
@@ -18,6 +20,8 @@ public class NavigateurDesVues extends Application{
 		this.vueEquipe = new VueEquipe();
 		this.vueEditerEquipe = new VueEditerEquipe();
 		this.vueListeEquipe = new VueListeEquipe();
+		this.vueAjouterJoueur = new VueAjouterJoueur();
+		this.vueEditerJoueur = new VueEditerJoueur();
 	}
 
 	@Override
@@ -50,6 +54,14 @@ public class NavigateurDesVues extends Application{
 		return vueListeEquipe;
 	}
 	
+	public VueAjouterJoueur getVueAjouterJoueur() {
+		return vueAjouterJoueur;
+	}
+	
+	public VueEditerJoueur getVueEditerJoueur() {
+		return vueEditerJoueur;
+	}
+	
 	public void naviguerVersVueAjouterEquipe() {
 		stade.setScene(this.vueAjouterEquipe);
 		stade.show();
@@ -71,4 +83,13 @@ public class NavigateurDesVues extends Application{
 		stade.show();				
 	}
 
+	public void naviguerVersVueAjouterJoueur() {
+		stade.setScene(this.vueAjouterJoueur);
+		stade.show();
+	}
+	
+	public void naviguerVersVueEditerJoueur() {
+		stade.setScene(this.vueEditerJoueur);
+		stade.show();
+	}
 }

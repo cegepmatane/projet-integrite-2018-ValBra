@@ -47,7 +47,7 @@ public class VueEditerEquipe extends Scene{
 		this.ajouterJoueur.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent arg0) {
-				
+				controleur.notifierNaviguerAjouterJoueur();
 			}
 		});
 		
@@ -72,7 +72,6 @@ public class VueEditerEquipe extends Scene{
 		panneau.getChildren().add(this.actionEnregistrerEquipe);
 		panneau.getChildren().add(grilleListeJoueurs);
 		panneau.getChildren().add(this.ajouterJoueur);
-		//panneau.getChildren().add(listeJoueurs);
 	}
 	
 	public void afficherEffectif(List<Joueur> effectif) {

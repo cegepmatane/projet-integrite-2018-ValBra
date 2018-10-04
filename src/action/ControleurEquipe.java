@@ -9,7 +9,9 @@ import modele.Equipe;
 import modele.Joueur;
 import vue.NavigateurDesVues;
 import vue.VueAjouterEquipe;
+import vue.VueAjouterJoueur;
 import vue.VueEditerEquipe;
+import vue.VueEditerJoueur;
 import vue.VueEquipe;
 import vue.VueListeEquipe;
 
@@ -19,6 +21,8 @@ public class ControleurEquipe {
 	private VueEquipe vueEquipe;
 	private VueListeEquipe vueListeEquipe;
 	private VueEditerEquipe vueEditerEquipe;
+	private VueAjouterJoueur vueAjouterJoueur;
+	private VueEditerJoueur vueEditerJoueur;
 	private EquipeDAO equipeDAO;
 	private JoueurDAO joueurDAO;
 	
@@ -33,6 +37,8 @@ public class ControleurEquipe {
 		this.vueEquipe = navigateur.getVueEquipe();
 		this.vueEditerEquipe = navigateur.getVueEditerEquipe();
 		this.vueListeEquipe = navigateur.getVueListeEquipe();
+		this.vueAjouterJoueur = navigateur.getVueAjouterJoueur();
+		this.vueEditerJoueur = navigateur.getVueEditerJoueur();
 		
 		Equipe equipe1 = new Equipe("AS Nancy","France","1967","Marcel Picot","Didier Tholot");
 		this.vueEquipe.afficherEquipe(equipe1);
@@ -42,12 +48,6 @@ public class ControleurEquipe {
 		List<Equipe> listeEquipes = equipeDAO.montrerListeEquipe();
 		vueListeEquipe.afficherListeEquipes(listeEquipes);
 		this.navigateur.naviguerVersVueListeEquipe();
-				
-		//Test vueEquipe
-		/*List<Joueur> listeJoueursNancy = new ArrayList<Joueur>();
-		listeJoueursNancy.add(new Joueur("Chernik","31","gardien"));
-		Equipe equipe1 = new Equipe("AS Nancy","France","1967","Marcel Picot","Didier Tholot",listeJoueursNancy);
-		vueEquipe.afficherEquipe(equipe1);*/
 		
 	}
 	
@@ -84,5 +84,16 @@ public class ControleurEquipe {
 		this.vueEditerEquipe.afficherEffectif(this.joueurDAO.listerJoueurs(idEquipe));
 		this.navigateur.naviguerVersVueEditerEquipe();
 		
+	}
+	
+	public void enregistrerNouveauJoueur() {
+		Joueur joueur = this.navigateur.getVueAjouterJoueur().creerJoueur();
+		this.joueurDAO.ajouterJoueur(joueur);
+		this.navigateur.naviguerVersVueListeEquipe();
+	}
+	
+	public void notifierNaviguerAjouterJoueur()
+	{
+		this.navigateur.naviguerVersVueAjouterJoueur();
 	}
 }

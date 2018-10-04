@@ -42,4 +42,16 @@ public class JoueurDAO implements JoueurSQL{
 		}
 		return listeJoueurs;
 	}
+	
+	public void ajouterJoueur(Joueur joueur) {
+		try {
+			PreparedStatement requeteAjoutEquipe = connection.prepareStatement(SQL_AJOUTER_JOUEURS);
+			requeteAjoutEquipe.setString(1, joueur.getNom());
+			requeteAjoutEquipe.setString(2, joueur.getAge());
+			requeteAjoutEquipe.setString(3, joueur.getPoste());
+			requeteAjoutEquipe.execute();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+	}
 }
