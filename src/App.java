@@ -1,5 +1,4 @@
 import vue.NavigateurDesVues;
-import vue.VueEquipe;
 
 public class App {
 

@@ -1,29 +1,22 @@
 package vue;
 
-import java.util.List;
-
 import action.ControleurEquipe;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import modele.Equipe;
-import modele.Joueur;
 
 public class VueEquipe extends Scene{
 	
 	Label valeurNom,valeurPays,valeurDateDeCreation,valeurStade,valeurEntraineur;
-	GridPane grilleEquipe;
-	private ControleurEquipe controleurEquipe;
+	private ControleurEquipe controleurEquipe = null;
 	
 	public VueEquipe() {
-		super(new Pane(),400,400);
-		Pane panneau = (Pane) this.getRoot();
-		
-		grilleEquipe = new GridPane();
+		super(new GridPane(),400,400);
+		GridPane grilleEquipe = (GridPane)this.getRoot();
 		
 		valeurNom = new Label();
-		grilleEquipe.add(new Label("Nom: "),0,0);
+		grilleEquipe.add(new Label("Nom: "), 0, 0);
 		grilleEquipe.add(valeurNom, 1, 0);
 		
 		valeurPays = new Label();
@@ -41,19 +34,6 @@ public class VueEquipe extends Scene{
 		valeurEntraineur = new Label();
 		grilleEquipe.add(new Label("Entraineur: "),0,4);
 		grilleEquipe.add(valeurEntraineur, 1, 4);
-		
-		/*grilleEquipe.add(new Label("Liste des joueurs: "), 0, 5);
-		grilleEquipe.add(new Label("Nom"), 1, 5);
-		grilleEquipe.add(new Label("Poste"), 2, 5);
-		grilleEquipe.add(new Label("Age"), 3, 5);*/
-		
-		/*for(int indexListeJoueurs=0; indexListeJoueurs<listeJoueurs.size();indexListeJoueurs++) {
-			grilleEquipe.add(new Label(listeJoueurs.get(indexListeJoueurs).getNom()), 1, indexListeJoueurs+6);
-			grilleEquipe.add(new Label(listeJoueurs.get(indexListeJoueurs).getPoste()), 2, indexListeJoueurs+6);
-			grilleEquipe.add(new Label(listeJoueurs.get(indexListeJoueurs).getAge()), 3, indexListeJoueurs+6);
-		}*/
-		
-		panneau.getChildren().add(grilleEquipe);
 	}
 	
 	public void afficherEquipe(Equipe equipe) {
@@ -62,15 +42,6 @@ public class VueEquipe extends Scene{
 		this.valeurDateDeCreation.setText(equipe.getAnneeDeCreation());
 		this.valeurStade.setText(equipe.getStade());
 		this.valeurEntraineur.setText(equipe.getEntraineur());
-		
-		/*if(!equipe.getListeJoueurs().isEmpty()) {
-			for(int indexListeJoueurs=0; indexListeJoueurs<equipe.getListeJoueurs().size();indexListeJoueurs++) {
-				grilleEquipe.add(new Label(equipe.getListeJoueurs().get(indexListeJoueurs).getNom()), 1, indexListeJoueurs+6);
-				grilleEquipe.add(new Label(equipe.getListeJoueurs().get(indexListeJoueurs).getPoste()), 2, indexListeJoueurs+6);
-				grilleEquipe.add(new Label(equipe.getListeJoueurs().get(indexListeJoueurs).getAge()), 3, indexListeJoueurs+6);
-			}
-		}*/
-		
 	}
 	
 	public void setControleur(ControleurEquipe controleurEquipe) {

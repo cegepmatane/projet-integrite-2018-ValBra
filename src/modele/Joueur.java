@@ -2,20 +2,12 @@ package modele;
 
 public class Joueur {
 	protected String nom, age, poste;
-	protected Equipe equipe;
 	protected int id;
 	public Joueur(String nom, String age, String poste) {
 		super();
 		this.nom = nom;
 		this.age = age;
 		this.poste = poste;
-	}
-	public Joueur(String nom, String age, String poste, Equipe equipe) {
-		super();
-		this.nom = nom;
-		this.age = age;
-		this.poste = poste;
-		this.equipe = equipe;
 	}
 	public String getNom() {
 		return nom;
@@ -34,12 +26,6 @@ public class Joueur {
 	}
 	public void setPoste(String poste) {
 		this.poste = poste;
-	}
-	public Equipe getEquipe() {
-		return equipe;
-	}
-	public void setEquipe(Equipe equipe) {
-		this.equipe = equipe;
 	}
 	public int getId() {
 		return id;

@@ -1,12 +1,8 @@
 package vue;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import action.ControleurEquipe;
 import javafx.application.*;
 import javafx.stage.Stage;
-import modele.Equipe;
 
 public class NavigateurDesVues extends Application{
 	
@@ -16,11 +12,19 @@ public class NavigateurDesVues extends Application{
 	private VueListeEquipe vueListeEquipe = new VueListeEquipe();
 	private Stage stade;
 	private ControleurEquipe controleur;
+	
+	public NavigateurDesVues() {
+		this.vueAjouterEquipe = new VueAjouterEquipe();
+		this.vueEquipe = new VueEquipe();
+		this.vueEditerEquipe = new VueEditerEquipe();
+		this.vueListeEquipe = new VueListeEquipe();
+	}
 
 	@Override
 	public void start(Stage stade) throws Exception {
 		this.stade=stade;
-		stade.setScene(this.vueListeEquipe);
+		//stade.setScene(this.vueListeEquipe);
+		stade.setScene(null);
 		stade.show();
 		this.controleur = ControleurEquipe.getInstance();
 		controleur.afficherVues(this);
@@ -32,10 +36,6 @@ public class NavigateurDesVues extends Application{
 	
 	public VueEditerEquipe getVueEditerEquipe() {
 		return vueEditerEquipe;
-	}
-	
-	public void setVueEditerEquipe(VueEditerEquipe vueEditerEquipe) {
-		this.vueEditerEquipe = vueEditerEquipe;
 	}
 
 	public VueAjouterEquipe getVueAjouterEquipe() {

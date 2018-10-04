@@ -6,7 +6,6 @@ public class Equipe {
 
 	protected String nom,pays,anneeDeCreation,stade,entraineur;
 	protected int id;
-	//protected List<Joueur> listeJoueurs;
 	
 	public Equipe(String nom, String pays, String anneeDeCreation,String stade, String entraineur) {
 		super();
@@ -25,7 +24,6 @@ public class Equipe {
 		this.anneeDeCreation = anneeDeCreation;
 		this.stade = stade;
 		this.entraineur = entraineur;
-		//this.listeJoueurs = listeJoueurs;
 	}
 
 	public String getNom() {
@@ -75,12 +73,4 @@ public class Equipe {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	/*public List<Joueur> getListeJoueurs() {
-		return listeJoueurs;
-	}
-
-	public void setListeJoueurs(List<Joueur> listeJoueurs) {
-		this.listeJoueurs = listeJoueurs;
-	}*/
 }

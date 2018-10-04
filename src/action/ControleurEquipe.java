@@ -3,8 +3,8 @@ package action;
 import java.util.ArrayList;
 import java.util.List;
 
-import accesseur.EquipeDAO;
-import accesseur.JoueurDAO;
+import donnees.EquipeDAO;
+import donnees.JoueurDAO;
 import modele.Equipe;
 import modele.Joueur;
 import vue.NavigateurDesVues;
@@ -34,11 +34,14 @@ public class ControleurEquipe {
 		this.vueEditerEquipe = navigateur.getVueEditerEquipe();
 		this.vueListeEquipe = navigateur.getVueListeEquipe();
 		
+		Equipe equipe1 = new Equipe("AS Nancy","France","1967","Marcel Picot","Didier Tholot");
+		this.vueEquipe.afficherEquipe(equipe1);
+		this.navigateur.naviguerVersVueEquipe();
+		
 		//Test DAO
-		//testListeEquipes.montrerListeEquipe();
 		List<Equipe> listeEquipes = equipeDAO.montrerListeEquipe();
 		vueListeEquipe.afficherListeEquipes(listeEquipes);
-		//testListeEquipes.accesBaseDeDonnees();
+		this.navigateur.naviguerVersVueListeEquipe();
 				
 		//Test vueEquipe
 		/*List<Joueur> listeJoueursNancy = new ArrayList<Joueur>();
@@ -56,9 +59,16 @@ public class ControleurEquipe {
 		return instance;
 	}
 	
-	public void enregistrerEquipe() {
+	public void enregistrerNouvelleEquipe() {
 		Equipe equipe = this.navigateur.getVueAjouterEquipe().creerEquipe();
 		this.equipeDAO.ajouterEquipe(equipe);
+		this.vueListeEquipe.afficherListeEquipes(this.equipeDAO.montrerListeEquipe());
+		this.navigateur.naviguerVersVueListeEquipe();
+	}
+	
+	public void enregistrerEquipe() {
+		Equipe equipe = this.navigateur.getVueEditerEquipe().demanderEquipe();
+		this.equipeDAO.modifierEquipe(equipe);
 		this.vueListeEquipe.afficherListeEquipes(this.equipeDAO.montrerListeEquipe());
 		this.navigateur.naviguerVersVueListeEquipe();
 	}
@@ -74,12 +84,5 @@ public class ControleurEquipe {
 		this.vueEditerEquipe.afficherEffectif(this.joueurDAO.listerJoueurs(idEquipe));
 		this.navigateur.naviguerVersVueEditerEquipe();
 		
-	}
-	
-	public void notifierEnregistrerMouton() {
-		Equipe equipe = this.navigateur.getVueEditerEquipe().demanderEquipe();
-		this.equipeDAO.modifierEquipe(equipe);
-		this.vueListeEquipe.afficherListeEquipes(this.equipeDAO.montrerListeEquipe());
-		this.navigateur.naviguerVersVueListeEquipe();
 	}
 }

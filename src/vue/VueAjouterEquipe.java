@@ -29,7 +29,7 @@ public class VueAjouterEquipe extends Scene{
 
 			@Override
 			public void handle(ActionEvent event) {
-				controleurEquipe.enregistrerEquipe();
+				controleurEquipe.enregistrerNouvelleEquipe();
 			}
 			
 		});
