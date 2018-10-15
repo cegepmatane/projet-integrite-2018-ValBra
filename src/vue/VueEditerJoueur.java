@@ -30,9 +30,7 @@ public class VueEditerJoueur extends Scene {
 		this.actionEnregistrerJoueur.setOnAction(new EventHandler<ActionEvent>() {
  			@Override
 			public void handle(ActionEvent arg0) {
-				
-				controleur.enregistrerNouveauJoueur();
-				
+				controleur.enregistrerJoueur();
 			}});
 		
 		this.ajouterJoueur = new Button("Ajouter un joueur");
@@ -59,16 +57,14 @@ public class VueEditerJoueur extends Scene {
 		panneau.getChildren().add(this.ajouterJoueur);
 	}
 	
-	public void afficherEquipe(Joueur joueur)
-	{
+	public void afficherJoueur(Joueur joueur){
 		this.idJoueur = joueur.getId();
 		this.valeurNom.setText(joueur.getNom());
 		this.valeurAge.setText(joueur.getAge());
 		this.valeurPoste.setText(joueur.getPoste());
 	}
 	
-	public Joueur demanderEquipe()
-	{
+	public Joueur demanderJoueur(){
 		Joueur joueur = new Joueur(this.valeurNom.getText(),this.valeurAge.getText(),this.valeurPoste.getText());
 		joueur.setId(idJoueur);
 		return joueur;

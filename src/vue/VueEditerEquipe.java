@@ -39,7 +39,7 @@ public class VueEditerEquipe extends Scene{
  			@Override
 			public void handle(ActionEvent arg0) {
 				
-				controleur.enregistrerNouvelleEquipe();
+				controleur.enregistrerEquipe();
 				
 			}});
 		
@@ -77,9 +77,17 @@ public class VueEditerEquipe extends Scene{
 	public void afficherEffectif(List<Joueur> effectif) {
 		int index=0;
 		for(Joueur joueur:effectif) {
+			Button naviguerVersEditerJoueur = new Button("Editer");
+			naviguerVersEditerJoueur.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent arg0) {
+					controleur.notifierNaviguerEditerJoueur(joueur.getId());
+				}
+			});
 			this.grilleListeJoueurs.add(new Label(effectif.get(index).getNom()+""), 7, index);
 			this.grilleListeJoueurs.add(new Label(effectif.get(index).getAge()+""), 8, index);
 			this.grilleListeJoueurs.add(new Label(effectif.get(index).getPoste()+""), 9, index);
+			this.grilleListeJoueurs.add(naviguerVersEditerJoueur, 10, index);
 			index++;
 		}
 	}

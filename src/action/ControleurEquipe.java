@@ -73,17 +73,14 @@ public class ControleurEquipe {
 		this.navigateur.naviguerVersVueListeEquipe();
 	}
 	
-	public void notifierNaviguerAjouterEquipe()
-	{
+	public void notifierNaviguerAjouterEquipe(){
 		this.navigateur.naviguerVersVueAjouterEquipe();
 	}
 	
-	public void notifierNaviguerEditerEquipe(int idEquipe)
-	{
+	public void notifierNaviguerEditerEquipe(int idEquipe){
 		this.vueEditerEquipe.afficherEquipe(this.equipeDAO.rapporterEquipe(idEquipe));
 		this.vueEditerEquipe.afficherEffectif(this.joueurDAO.listerJoueurs(idEquipe));
 		this.navigateur.naviguerVersVueEditerEquipe();
-		
 	}
 	
 	public void enregistrerNouveauJoueur() {
@@ -92,8 +89,19 @@ public class ControleurEquipe {
 		this.navigateur.naviguerVersVueListeEquipe();
 	}
 	
-	public void notifierNaviguerAjouterJoueur()
-	{
+	public void enregistrerJoueur() {
+		Joueur joueur = this.navigateur.getVueEditerJoueur().demanderJoueur();
+		this.joueurDAO.modifierJoueur(joueur);
+		//this.vueEditerEquipe.afficherListeJoueurs(this.joueurDAO.listerJoueurs());
+		this.navigateur.naviguerVersVueListeEquipe();
+	}
+	
+	public void notifierNaviguerAjouterJoueur(){
 		this.navigateur.naviguerVersVueAjouterJoueur();
+	}
+	
+	public void notifierNaviguerEditerJoueur(int idJoueur) {
+		this.vueEditerJoueur.afficherJoueur(this.joueurDAO.rapporterJoueur(idJoueur));
+		this.navigateur.naviguerVersVueEditerJoueur();
 	}
 }
